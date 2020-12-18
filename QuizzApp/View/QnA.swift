@@ -9,13 +9,16 @@ import SwiftUI
 
 // Question n Answer View...
 struct QnA: View {
+    @Binding var correct : Int
+    @Binding var wrong: Int
+    
     var body: some View {
         
         // Top Progress View...
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
             
             Capsule()
-                .fill(Color.gray.opacity(0.7))
+                .fill(Color.gray.opacity(0.5))
                 .frame(height: 6)
             
             Capsule()
@@ -29,7 +32,10 @@ struct QnA: View {
         HStack {
             
             Label(
-                title: { Text("1") },
+                title: { Text(correct == 0 ? "" : "\(correct)")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                },
                 icon: { Image(systemName: "checkmark")
                     .font(.largeTitle)
                     .foregroundColor(.green)
@@ -38,7 +44,10 @@ struct QnA: View {
             Spacer()
             
             Label(
-                title: { Text("1") },
+                title: { Text(wrong == 0 ? "" : "\(wrong)")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                },
                 icon: { Image(systemName: "xmark")
                     .font(.largeTitle)
                     .foregroundColor(.red)

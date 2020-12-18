@@ -12,6 +12,11 @@ struct Home: View {
     @State var show = false
     @State var set = "Round_1"
     
+    // For Analytics...
+    @State var correct = 0
+    @State var wrong = 0
+    @State var answered = 0
+    
     var body: some View {
         
         VStack {
@@ -69,7 +74,7 @@ struct Home: View {
         }
         .background(Color.black.opacity(0.05).ignoresSafeArea())
         .sheet(isPresented: $show, content: {
-            QnA()
+            QnA(correct: $correct, wrong: $wrong)
         })
     }
 }
